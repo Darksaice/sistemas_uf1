@@ -2,6 +2,17 @@
 
 echo "Ejercicio Bucles y MD5"
 
-for VARIABLES in `ls *.mp4`; do
-	md5sum $VARIABLE | cut 
+KKFUTI="OLA K ASE"
+
+for ARCHIVO in `ls *.mp4`; do
+	echo "---------------------"
+	VIDEO=`file $ARCHIVO | grep -i media`
+	echo $VIDEO
+	if [ "$VIDEO" != "" ]; then
+		#md5sum $ARCHIVO
+		NOMBRE=`echo $ARCHIVO | cut -d "." -f 1`
+
+		ffmpeg -i $ARCHIVO $NOMBRE.mkv
+
+	fi	
 done
